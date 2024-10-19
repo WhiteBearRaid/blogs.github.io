@@ -4,6 +4,58 @@
   
   
   <entry>
+    <title>磁链观测器</title>
+    <link href="/2024/10/19/%E7%A3%81%E9%93%BE%E8%A7%82%E6%B5%8B%E5%99%A8/"/>
+    <url>/2024/10/19/%E7%A3%81%E9%93%BE%E8%A7%82%E6%B5%8B%E5%99%A8/</url>
+    
+    <content type="html"><![CDATA[<p>非线性磁链观测器的状态变量为磁链值，观测的磁链值收敛于电机实际磁链值，观测器收敛。SPM的 <span class="math inline">\(\alpha\beta\)</span> 轴电压方程：</p><p>（1） <span class="math inline">\(\begin{bmatrix}  u_\alpha\\  u_\beta  \end{bmatrix} = \begin{bmatrix} R+pL_d &amp;  0\\ 0&amp;R+pL_q \end{bmatrix}\begin{bmatrix} i_\alpha  \\ i_\beta\end{bmatrix}+ [w\psi_m]\begin{bmatrix} -sin\theta \\cos\theta\end{bmatrix}\)</span></p><p>将公式（1）进行变换得到：</p><p>（2） <span class="math inline">\(L\begin{bmatrix} \dot{i_\alpha} \\\dot{i_\beta}  \end{bmatrix}=-R_s\begin{bmatrix} i_\alpha\\i_\beta\end{bmatrix}+w\psi_m\begin{bmatrix}sin\theta\\-cos\theta  \end{bmatrix}+\begin{bmatrix} u_\alpha \\u_\beta\end{bmatrix}\)</span></p><p>状态空间方程：</p><p><span class="math inline">\(\left\{\begin{matrix}  \dot{x}=Ax+Bu\\  y=Cx \end{matrix}\right.\)</span></p><p>定义状态变量X：</p><p>（3） <span class="math inline">\(\begin{bmatrix}\dot{x1}\\\dot{x2}\end{bmatrix}=L\begin{bmatrix}\dot{i_\alpha}\\\dot{i_\beta}\end{bmatrix}-w\psi_m\begin{bmatrix} sin\theta\\-cos\theta\end{bmatrix}=\begin{bmatrix}y1\\y2\end{bmatrix}\)</span></p><p>（4） <spanclass="math inline">\(\begin{bmatrix}y1\\y2\end{bmatrix}=-R_s\begin{bmatrix}i_\alpha\\i_\beta\end{bmatrix}+\begin{bmatrix}u_\alpha\\u_\beta\end{bmatrix}\)</span></p><p>对式（3）两边进行积分可得：</p><p>（5） <spanclass="math inline">\(\begin{bmatrix}x1\\x2\end{bmatrix}=L\begin{bmatrix}i_\alpha\\i_\beta\end{bmatrix}+\psi_m\begin{bmatrix}cos\theta\\sin\theta\end{bmatrix}\)</span></p><p>因为w 是，所以积分后消去了w项。 定义空间向量eta(x):</p><p>（6） <spanclass="math inline">\(eta(x)=\begin{bmatrix}eta(x1)\\eta(x2)\end{bmatrix}=x-L\begin{bmatrix}i_\alpha\\i_\beta\end{bmatrix}=\psi_m\begin{bmatrix}cos\theta\\sin\theta\end{bmatrix}\)</span></p><p>观测器模型：</p><p><spanclass="math inline">\(\left\{\begin{matrix}  \dot{\hat{x}}=A\hat{x}+Bu+K(y-\hat{y})\\\hat{y}=C\hat{x} \end{matrix}\right.\)</span></p><p>非线性磁链观测器模型：</p><p>（7） <span class="math inline">\(\begin{bmatrix}\dot{\hat{x1}}\\\dot{\hat{x2}} \end{bmatrix}=\begin{bmatrix}y1 \\y2\end{bmatrix}+\frac{\gamma}{2}\begin{bmatrix}eta(x1)\\eta(x2)\end{bmatrix}\{ \psi_m^2-\left \|  eta(x)\right \|^2\}\)</span></p><p>当观测器收敛时有：</p><p><span class="math inline">\(\psi_m^2=\left \|  eta(x)\right \|^2\)</span></p><p>对式（7）进行离散化：</p><p><span class="math inline">\(\begin{bmatrix} \hat{x1(k)}\\\hat{x2(k)}\end{bmatrix}=T_s \left [ \begin{bmatrix}y1_{(k-1)}\\y2_{(k-1)}\end{bmatrix}+\frac{\gamma}{2}\begin{bmatrix}etax1_{(k-1)}\\etax2_{(k-1)}\end{bmatrix}\{   \psi_m^2-\left\|  eta(x)\right \| ^2\  \}  \right ] +\begin{bmatrix} \hat{x1_{(k-1)}}\\ \hat{x2_{(x-1)}}\end{bmatrix}\)</span></p><p>由此可得包含观测角度的sin、cos值：</p><p><spanclass="math inline">\(\begin{bmatrix}cos{\hat{\theta}}\\sin{\hat{\theta}}\end{bmatrix}=\frac{1}{\psi_m}\left(\begin{bmatrix} \hat{x1_(k)} \\ \hat{x2_{(k)}}\end{bmatrix}-L\begin{bmatrix} i_\alpha \\ i_\beta \end{bmatrix} \right)\)</span></p><p>磁链观测器锁相环输入： <img src="/images/pll_input.png" />因为电机反电动势滞后于转子磁链90°，所以通过反电动势计算得出的相位需要补偿90°。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>观测器</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>nolinear flux observer</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>转子磁链和反电动势的相位关系</title>
+    <link href="/2024/10/19/%E8%BD%AC%E5%AD%90%E7%A3%81%E9%93%BE%E5%92%8C%E5%8F%8D%E7%94%B5%E5%8A%A8%E5%8A%BF%E7%9A%84%E7%9B%B8%E4%BD%8D%E5%85%B3%E7%B3%BB/"/>
+    <url>/2024/10/19/%E8%BD%AC%E5%AD%90%E7%A3%81%E9%93%BE%E5%92%8C%E5%8F%8D%E7%94%B5%E5%8A%A8%E5%8A%BF%E7%9A%84%E7%9B%B8%E4%BD%8D%E5%85%B3%E7%B3%BB/</url>
+    
+    <content type="html"><![CDATA[<p>dq轴定子电压方程如下：</p>$ {<span class="math display">\[\begin{matrix}  u_d =Ri_d+\frac{d}{dt}\psi_d -w_e\psi_q\\ u_q=Ri_q+\frac{d}{dt}\psi_q+w_e\psi_d \end{matrix}\]</span><p>. $</p><p>定子磁链方程如下：</p>$ {<span class="math display">\[\begin{matrix}  \psi_d = L_di_d + \psi_f\\\psi_q = L_qi_q \end{matrix}\]</span><p>. $</p><p>合并定子电压方程和定子磁链方程可得：</p>$ {<span class="math display">\[\begin{matrix}  u_d =Ri_d+L_d\frac{d}{dt}i_d -w_eL_qi_q \\ u_q=Ri_q+L_q\frac{d}{dt}i_q+w_e(L_di_d+\psi_f) \end{matrix}\]</span><p>. $</p><p>转子磁链投影到定子alpha轴上，可得：</p><p>$ _{} = _fcos _e $</p><p>假设电机的电角速度是w_e，初始相位为0，则磁链可以表示为：</p><p>$ _{}=_fcos(w_et) $</p><p>根据最基本的法拉第电磁感应定律，d轴上的磁链，切割定子绕组，会产生感应电动势，可以求得该磁链切割定子绕组产生的感应电动势为：</p><p>$ e = ==_f=-w_e_fsin(w_et)=w_e_fcos(_e+) $</p><p>由此可知，相对于磁链的当前相位或者说角度而言，磁链切割绕组所产生的反电动势的相位超前磁链90°。因此d轴磁链切割定子绕组产生的反电动势位于q轴位置。在使用反电动势估算得出转子角度信息时，要减去90°的超前相位。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>电机参数关系</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>磁链</tag>
+      
+      <tag>反电动势</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Hello World</title>
     <link href="/2024/10/19/hello-world/"/>
     <url>/2024/10/19/hello-world/</url>
@@ -26,7 +78,7 @@
     
     <categories>
       
-      <category>磁链</category>
+      <category>电机参数关系</category>
       
     </categories>
     
@@ -34,6 +86,10 @@
     <tags>
       
       <tag>磁链</tag>
+      
+      <tag>反电动势系数</tag>
+      
+      <tag>转矩系数</tag>
       
     </tags>
     
@@ -58,7 +114,7 @@
     
     <tags>
       
-      <tag>SVPWM</tag>
+      <tag>svpwm-overmodulation</tag>
       
     </tags>
     
@@ -83,7 +139,7 @@
     
     <tags>
       
-      <tag>SVPWM</tag>
+      <tag>svpwm占空比调制</tag>
       
     </tags>
     

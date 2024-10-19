@@ -19,21 +19,24 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="https:&#x2F;&#x2F;whitebear.zeabur.app fluid使用教程 https:&#x2F;&#x2F;github.com&#x2F;fluid-dev&#x2F;hexo-theme-fluid 注意 配置fluid可按照fluid yml里的链接来做 支持latex需要安装pandoc（独立软件） 在初始化hexo时，一定要以管理员方式来操作，用npm来实现，避免错误 Welcome to Hexo! T">
+    <meta name="description" content="非线性磁链观测器的状态变量为磁链值，观测的磁链值收敛于电机实际磁链值，观测器收敛。 SPM的 \(\alpha\beta\) 轴电压方程： （1） \(\begin{bmatrix}  u_\alpha \\  u_\beta  \end{bmatrix} &#x3D; \begin{bmatrix} R+pL_d &amp;  0\\ 0 &amp;R+pL_q \end{bmatrix}\beg">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2024/10/19/hello-world/index.html">
+<meta property="og:title" content="磁链观测器">
+<meta property="og:url" content="http://example.com/2024/10/19/%E7%A3%81%E9%93%BE%E8%A7%82%E6%B5%8B%E5%99%A8/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="https:&#x2F;&#x2F;whitebear.zeabur.app fluid使用教程 https:&#x2F;&#x2F;github.com&#x2F;fluid-dev&#x2F;hexo-theme-fluid 注意 配置fluid可按照fluid yml里的链接来做 支持latex需要安装pandoc（独立软件） 在初始化hexo时，一定要以管理员方式来操作，用npm来实现，避免错误 Welcome to Hexo! T">
+<meta property="og:description" content="非线性磁链观测器的状态变量为磁链值，观测的磁链值收敛于电机实际磁链值，观测器收敛。 SPM的 \(\alpha\beta\) 轴电压方程： （1） \(\begin{bmatrix}  u_\alpha \\  u_\beta  \end{bmatrix} &#x3D; \begin{bmatrix} R+pL_d &amp;  0\\ 0 &amp;R+pL_q \end{bmatrix}\beg">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-10-18T16:44:26.268Z">
-<meta property="article:modified_time" content="2024-10-18T18:08:17.049Z">
+<meta property="og:image" content="http://example.com/images/pll_input.png">
+<meta property="article:published_time" content="2024-10-19T02:33:35.000Z">
+<meta property="article:modified_time" content="2024-10-19T02:43:15.084Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="nolinear flux observer">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/images/pll_input.png">
   
   
   
-  <title>Hello World - Hexo</title>
+  <title>磁链观测器 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +202,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text="磁链观测器"></span>
           
         </div>
 
@@ -210,7 +213,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-10-19 00:44" pubdate>
+        <time datetime="2024-10-19 10:33" pubdate>
           October 19, 2024 am
         </time>
       </span>
@@ -222,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          83 words
+          552 words
         
       </span>
     
@@ -233,7 +236,7 @@
         
         
         
-          1 mins
+          5 mins
         
       </span>
     
@@ -270,44 +273,66 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hello World</h1>
+            <h1 id="seo-header">磁链观测器</h1>
             
             
               <div class="markdown-body">
                 
-                <p>https://whitebear.zeabur.app</p>
-<h1 id="fluid使用教程">fluid使用教程</h1>
-<p>https://github.com/fluid-dev/hexo-theme-fluid</p>
-<h1 id="注意">注意</h1>
-<h1 id="配置fluid可按照fluid-yml里的链接来做">配置fluid可按照fluid
-yml里的链接来做</h1>
-<h1
-id="支持latex需要安装pandoc独立软件">支持latex需要安装pandoc（独立软件）</h1>
-<h1
-id="在初始化hexo时一定要以管理员方式来操作用npm来实现避免错误">在初始化hexo时，一定要以管理员方式来操作，用npm来实现，避免错误</h1>
-<p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very
-first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for
-more info. If you get any problems when using Hexo, you can find the
-answer in <a
-target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or
-you can ask me on <a
-target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="quick-start">Quick Start</h2>
-<h3 id="create-a-new-post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
-<p>More info: <a
-target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="run-server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="generate-static-files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
-<p>More info: <a
-target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="deploy-to-remote-sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-<p>More info: <a
-target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+                <p>非线性磁链观测器的状态变量为磁链值，观测的磁链值收敛于电机实际磁链值，观测器收敛。
+SPM的 <span class="math inline">\(\alpha\beta\)</span> 轴电压方程：</p>
+<p>（1） <span class="math inline">\(\begin{bmatrix}  u_\alpha
+\\  u_\beta  \end{bmatrix} = \begin{bmatrix} R+pL_d &amp;  0\\ 0
+&amp;R+pL_q \end{bmatrix}\begin{bmatrix} i_\alpha  \\ i_\beta
+\end{bmatrix}+ [w\psi_m]\begin{bmatrix} -sin\theta \\
+cos\theta\end{bmatrix}\)</span></p>
+<p>将公式（1）进行变换得到：</p>
+<p>（2） <span class="math inline">\(L\begin{bmatrix} \dot{i_\alpha} \\
+\dot{i_\beta}  \end{bmatrix}=-R_s\begin{bmatrix} i_\alpha\\
+i_\beta\end{bmatrix}+w\psi_m\begin{bmatrix}
+sin\theta\\-cos\theta  \end{bmatrix}+\begin{bmatrix} u_\alpha \\
+u_\beta\end{bmatrix}\)</span></p>
+<p>状态空间方程：</p>
+<p><span class="math inline">\(\left\{\begin{matrix}  \dot{x}=Ax+Bu
+\\  y=Cx \end{matrix}\right.\)</span></p>
+<p>定义状态变量X：</p>
+<p>（3） <span class="math inline">\(\begin{bmatrix}
+\dot{x1}\\\dot{x2}\end{bmatrix}=L\begin{bmatrix}\dot{i_\alpha}\\\dot{i_\beta}
+\end{bmatrix}-w\psi_m\begin{bmatrix} sin\theta\\-cos\theta
+\end{bmatrix}=\begin{bmatrix}y1\\y2\end{bmatrix}\)</span></p>
+<p>（4） <span
+class="math inline">\(\begin{bmatrix}y1\\y2\end{bmatrix}=-R_s\begin{bmatrix}i_\alpha\\i_\beta\end{bmatrix}+\begin{bmatrix}u_\alpha\\u_\beta\end{bmatrix}\)</span></p>
+<p>对式（3）两边进行积分可得：</p>
+<p>（5） <span
+class="math inline">\(\begin{bmatrix}x1\\x2\end{bmatrix}=L\begin{bmatrix}i_\alpha\\i_\beta\end{bmatrix}+\psi_m\begin{bmatrix}cos\theta\\sin\theta\end{bmatrix}\)</span></p>
+<p>因为w 是，所以积分后消去了w项。 定义空间向量eta(x):</p>
+<p>（6） <span
+class="math inline">\(eta(x)=\begin{bmatrix}eta(x1)\\eta(x2)\end{bmatrix}=x-L\begin{bmatrix}i_\alpha\\i_\beta\end{bmatrix}=\psi_m\begin{bmatrix}cos\theta\\sin\theta\end{bmatrix}\)</span></p>
+<p>观测器模型：</p>
+<p><span
+class="math inline">\(\left\{\begin{matrix}  \dot{\hat{x}}=A\hat{x}+Bu+K(y-\hat{y})
+\\\hat{y}=C\hat{x} \end{matrix}\right.\)</span></p>
+<p>非线性磁链观测器模型：</p>
+<p>（7） <span class="math inline">\(\begin{bmatrix}
+\dot{\hat{x1}}\\\dot{\hat{x2}} \end{bmatrix}=\begin{bmatrix}y1 \\
+y2\end{bmatrix}+\frac{\gamma}{2}\begin{bmatrix}eta(x1)\\
+eta(x2)\end{bmatrix}\{ \psi_m^2-\left \|  eta(x)\right \|
+^2\}\)</span></p>
+<p>当观测器收敛时有：</p>
+<p><span class="math inline">\(\psi_m^2=\left \|  eta(x)\right \|
+^2\)</span></p>
+<p>对式（7）进行离散化：</p>
+<p><span class="math inline">\(\begin{bmatrix} \hat{x1(k)}\\
+\hat{x2(k)}\end{bmatrix}=T_s \left [ \begin{bmatrix}
+y1_{(k-1)}\\y2_{(k-1)}\end{bmatrix}+\frac{\gamma}{2}\begin{bmatrix}etax1_{(k-1)}\\etax2_{(k-1)}\end{bmatrix}\{   \psi_m^2-\left
+\|  eta(x)\right \| ^2\  \}  \right ] +\begin{bmatrix} \hat{x1_{(k-1)}}
+\\ \hat{x2_{(x-1)}}\end{bmatrix}\)</span></p>
+<p>由此可得包含观测角度的sin、cos值：</p>
+<p><span
+class="math inline">\(\begin{bmatrix}cos{\hat{\theta}}\\sin{\hat{\theta}}\end{bmatrix}=\frac{1}{\psi_m}\left
+(\begin{bmatrix} \hat{x1_(k)} \\ \hat{x2_{(k)}}\end{bmatrix}
+-L\begin{bmatrix} i_\alpha \\ i_\beta \end{bmatrix} \right)\)</span></p>
+<p>磁链观测器锁相环输入： <img src="/images/pll_input.png" srcset="/img/loading.gif" lazyload />
+因为电机反电动势滞后于转子磁链90°，所以通过反电动势计算得出的相位需要补偿90°。</p>
 
                 
               </div>
@@ -316,6 +341,34 @@ target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%A7%82%E6%B5%8B%E5%99%A8/" class="category-chain-item">观测器</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/nolinear-flux-observer/" class="print-no-link">#nolinear flux observer</a>
+      
+    </div>
   
 </div>
 
@@ -325,8 +378,8 @@ target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>http://example.com/2024/10/19/hello-world/</div>
+      <div>磁链观测器</div>
+      <div>http://example.com/2024/10/19/磁链观测器/</div>
     </div>
     <div class="license-meta">
       
@@ -370,18 +423,12 @@ target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/10/19/%E8%BD%AC%E5%AD%90%E7%A3%81%E9%93%BE%E5%92%8C%E5%8F%8D%E7%94%B5%E5%8A%A8%E5%8A%BF%E7%9A%84%E7%9B%B8%E4%BD%8D%E5%85%B3%E7%B3%BB/" title="转子磁链和反电动势的相位关系">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">转子磁链和反电动势的相位关系</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/10/18/%E7%A3%81%E9%93%BE%E3%80%81%E8%BD%AC%E7%9F%A9%E7%B3%BB%E6%95%B0Kt%E3%80%81%E5%8F%8D%E7%94%B5%E5%8A%BF%E7%B3%BB%E6%95%B0Ke%E7%9A%84%E5%85%B3%E7%B3%BB/" title="磁链、转矩系数Kt、反电势系数Ke的关系">
-                        <span class="hidden-mobile">磁链、转矩系数Kt、反电势系数Ke的关系</span>
+                      <a href="/2024/10/19/%E8%BD%AC%E5%AD%90%E7%A3%81%E9%93%BE%E5%92%8C%E5%8F%8D%E7%94%B5%E5%8A%A8%E5%8A%BF%E7%9A%84%E7%9B%B8%E4%BD%8D%E5%85%B3%E7%B3%BB/" title="转子磁链和反电动势的相位关系">
+                        <span class="hidden-mobile">转子磁链和反电动势的相位关系</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -438,6 +485,12 @@ target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -630,6 +683,49 @@ target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
