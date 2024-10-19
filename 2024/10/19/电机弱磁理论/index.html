@@ -1,0 +1,878 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/images/Motor.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="白熊">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="弱磁控制的原理 解释一： 由于逆变器直流侧电压达到最大值后会引起电流调节器的饱和，为了获得较宽的调速范 围，在基速以上高速运行时实现恒功率调速，需要对电动机进行弱磁控制。 PMSM 弱磁控制的思想源自他励直流电动机的调磁控制，当他励直流电动机端电压达 到最大电压时，只能通过降低电动机的励磁电流，改变励磁磁通，在保证电压平衡的条件下， 使电动机能恒功率运行于更高的转速。也就是说，他励直流">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电机弱磁理论">
+<meta property="og:url" content="http://example.com/2024/10/19/%E7%94%B5%E6%9C%BA%E5%BC%B1%E7%A3%81%E7%90%86%E8%AE%BA/index.html">
+<meta property="og:site_name" content="电机工坊">
+<meta property="og:description" content="弱磁控制的原理 解释一： 由于逆变器直流侧电压达到最大值后会引起电流调节器的饱和，为了获得较宽的调速范 围，在基速以上高速运行时实现恒功率调速，需要对电动机进行弱磁控制。 PMSM 弱磁控制的思想源自他励直流电动机的调磁控制，当他励直流电动机端电压达 到最大电压时，只能通过降低电动机的励磁电流，改变励磁磁通，在保证电压平衡的条件下， 使电动机能恒功率运行于更高的转速。也就是说，他励直流">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/flux_weakening.png">
+<meta property="og:image" content="http://example.com/images/flux_weakening_circle.png">
+<meta property="og:image" content="http://example.com/images/flux_weakening_5.png">
+<meta property="og:image" content="http://example.com/images/flux_weakening_6.png">
+<meta property="article:published_time" content="2024-10-19T06:49:17.000Z">
+<meta property="article:modified_time" content="2024-10-19T07:24:46.647Z">
+<meta property="article:author" content="白熊">
+<meta property="article:tag" content="flux weakening">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/images/flux_weakening.png">
+  
+  
+  
+  <title>电机弱磁理论 - 电机工坊</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>电机工坊</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/images/config/article.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="电机弱磁理论"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-10-19 14:49" pubdate>
+          October 19, 2024 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.5k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          29 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">电机弱磁理论</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="弱磁控制的原理">弱磁控制的原理</h3>
+<p>解释一：</p>
+<p>由于逆变器直流侧电压达到最大值后会引起电流调节器的饱和，为了获得较宽的调速范
+围，在基速以上高速运行时实现恒功率调速，需要对电动机进行弱磁控制。 PMSM
+弱磁控制的思想源自他励直流电动机的调磁控制，当他励直流电动机端电压达
+到最大电压时，只能通过降低电动机的励磁电流，改变励磁磁通，在保证电压平衡的条件下，
+使电动机能恒功率运行于更高的转速。也就是说，他励直流电动机可以通过降低励磁电流达
+到弱磁扩速的目的。对于PMSM
+而言，励磁磁动势因永磁体产生而无法调节，只能通过调
+节定子电流，即增加定子直轴去磁电流分量来维持高速运行时电压的平衡，达到弱磁扩速的
+目的。</p>
+<p>解释二：</p>
+<p>PMSM转动过程中，定子旋转磁场拖动转子磁场旋转的同时，又因为定子绕组线圈固定，相当于定子绕组线圈切割转子磁场，进而在定子绕组线圈中产生感应电动势，称为反电动势，PMSM转速越快，反电动势越大。相电压需要克服反电动势，相电压与反电动势差值提供产生电流，该电流大小影响转矩大小，当转速离开恒转矩区后就进入衡功率区，反电动势越大，电机转矩越小，当相电压与反电动势相同时，电机转矩将变得很小，也可以理解为转速无法继续提高。
+电机接受的最大电流和电压受到逆变器最大电流和电压的双重约束，当转速需要进一步提高，逆变器则不能提供更大的电流或电压。弱磁控制可以在不改变电机结构和逆变器容量的前提下提升永磁同步电机调速范围。
+在恒功率区需要电机以更高转速运行时，需要通过弱磁控制调节定子电流矢量来间接削弱转子励磁磁场进而减小反电动势，维持电压平衡，使电机转矩增大或转速增加。
+不同大小的转矩都对应不同的大小的恒转矩区和恒功率区，转矩越大，恒转矩区范围越小。
+<img src="/images/flux_weakening.png" srcset="/img/loading.gif" lazyload />
+弱磁控制通常在高速恒功率区使用，电机稳定高速运转，MTPA在低速恒转矩区使用。也可理解为当输出电压幅值大于最大限值后，就由MTPA控制变为弱磁控制。</p>
+<p>dq轴电压平衡方程如下：</p>
+<ol type="1">
+<li><span class="math inline">\(\begin{cases} u_d=-w_eL_qi_q+R_si_d\\
+u_q=w_eL_di_d+w_e\psi_f+R_si_q \end{cases}\)</span></li>
+</ol>
+<p>当转速比较高的时候，电压平衡方程中的电阻电压分量（对应电机定子等效电阻压降）可以忽略，此时可以得到：</p>
+<ol start="2" type="1">
+<li><span class="math inline">\(\begin{cases} u_d=-w_eL_qi_q\\
+u_q=w_eL_di_d+w_e\psi_f \end{cases}\)</span></li>
+</ol>
+<p>受逆变器输出电压的限制，PMSM稳定运行时，电压矢量幅值为：</p>
+<ol start="3" type="1">
+<li><span
+class="math inline">\(u_s^2=u_d^2+u_q^2&lt;=u_{lim}^2\)</span></li>
+</ol>
+<p>取最大电压情况，将上述dq轴电压公式代入上式中，可得：</p>
+<ol start="4" type="1">
+<li><span
+class="math inline">\((L_qi_q)^2+（L_di_d+\psi_f)^2=(u_{lim/w})^2\)</span></li>
+</ol>
+<p>由此式可知当输出电压达到极限值后，要想提升电角速度，只能通过调整dq轴电流来实现，因为PMSM的励磁是永磁体，所以其磁链无法调整。</p>
+<p>永磁同步电动机矢量控制的电压、电流轨迹分析:
+在弱磁高性能调速时，在不同的工作区域内，由于控制规律的不同，为了获得最优的控制效果，通常会选择不同的电流、电压矢量轨迹轨迹，因此，非常有必要去分析了解此时的电流、电压矢量轨迹。</p>
+<p>图1 <img src="/images/flux_weakening_circle.png" srcset="/img/loading.gif" lazyload
+alt="alt text" /></p>
+<h3 id="电压极限椭圆">电压极限椭圆：</h3>
+<p>式(4)中 <span
+class="math inline">\(u_{lim}=\frac{u_{dc}}{\sqrt{3}}\)</span>
+是定子端相电压，u_{dc}为直流母线电压。当 <span
+class="math inline">\(L_d\ne L_q\)</span> 时，为一椭圆方程。当 <span
+class="math inline">\(L_d=L_q\)</span> 时，化简上式可得其圆心在(<span
+class="math inline">\(-\psi_f/L_d\)</span>,0)半径为 <span
+class="math inline">\(u_{lim}/(L_0w)\)</span>的圆方程：</p>
+<ol start="5" type="1">
+<li><span
+class="math inline">\(i_q^2+(i_d+\psi_f/L_0)^2=[u_{lim/(L_0w)}]^2\)</span></li>
+</ol>
+<p>以椭圆方程为例说明，当电流调节器饱和后，定子端相电压为 <span
+class="math inline">\(u_s=u_{lim}\)</span>，此时转速w下对应的运行轨迹即为式(4)所示dq坐标系下的椭圆，并称其为转速w下的电压极限椭圆。易知在一定转速w下，定子电流只能运行于该椭圆轨迹内。并且随着转速w的增大，电压极限椭圆会逐渐缩小。</p>
+<h3 id="电流极限圆">电流极限圆：</h3>
+<p>受逆变器输出电流和电机本身额定电流的限制，PMSM稳定运行时，电流矢量幅值为：</p>
+<ol start="6" type="1">
+<li><span class="math inline">\(i_s^2=i_d^2+i_q^2 \le
+i_{lim}^2\)</span></li>
+</ol>
+<p>由式(6)可以看出，电流矢量轨迹在dq轴坐标系下是以原点为圆心的圆，并称该圆为电流极限圆，如图1所示。电动机稳定运行时，定子电流矢量既不能超过电压极限椭圆，也不能超出电流极限圆，一定要在电压极限椭圆和电流极限椭圆内。如
+<span class="math inline">\(w=w_0\)</span> 时，电流矢量 <span
+class="math inline">\(i_s\)</span>的范围被限制在阴影区域内。</p>
+<p>永磁同步电动机弱磁控制方法理论分析</p>
+<p>由式(1)可以看出，当电动机电压达到逆变器输出电压的极限时，即 <span
+class="math inline">\(u_s=u_{lim}\)</span>，如果要继续升高转速则只能靠调节
+<span class="math inline">\(i_{d}\)</span> 和 <span
+class="math inline">\(i_{q}\)</span>
+来实现，这就是电动机“弱磁”运行方式。增加直轴去磁分量i_d和减小交轴电流分量
+<span
+class="math inline">\(i_{q}\)</span>，以维持电压平衡，从而得到弱磁效果。但是为了确保电流不超过极限值，应保证弱磁控制增加
+<span class="math inline">\(i_{d}\)</span>的同时必须相应减小 <span
+class="math inline">\(i_q\)</span>。以隐极电机 <span
+class="math inline">\(L_{d}=L_{q}\)</span>
+为例分析PMSM的弱磁控制过程。</p>
+<p>MTPA：</p>
+<p>图2 恒转矩与最大转矩/电流轨迹 <img
+src="/images/flux_weakending_mtpa_spm.png" srcset="/img/loading.gif" lazyload alt="alt text" /></p>
+<p>易知隐极电机的恒转矩轨迹在 <span class="math inline">\(i_{d}\)</span>
+、<span class="math inline">\(i_{q}\)</span>
+平面上为一系列平行于d轴的水平线，其不仅关于d轴对称，而且在第二象限为正（运行于电动机状态），在第三象限为负（运行于制动状态）。</p>
+<p>不论在第二象限还是第三象限，某指令值的恒转矩轨迹上的任一点所对应的定子电流矢量均导致相同值的电动机转矩。这就牵涉到寻求一个幅值最小的定子电流矢量的问题，因为定子电流越小，电动机效率越高，所需逆变器容量也越低。在
+<span class="math inline">\(i_{d}\)</span> 、<span
+class="math inline">\(i_{q}\)</span>
+平面图中，某指令值的恒转矩轨迹上距离坐标原点最近的点，即为产生该转矩时所需的最小电流的空间矢量。把产生不同转矩值所需的最小电流点连接起来，即形成电动机的最大转矩/电流轨迹。由此易知隐极电机的最大转矩/电流轨迹就是q轴。因此，隐极电机的
+<span class="math inline">\(i_{d} = 0\)</span>
+控制即为最大转矩/电流比控制。</p>
+<p>图3 隐极电机定子电流矢量轨迹(<span
+class="math inline">\(-\psi_f/L_d\)</span> &lt; <span
+class="math inline">\(i_{lim}\)</span>) <img
+src="/images/flux_weakending_4.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 图4
+永磁同步电机功率输出特性 <img src="/images/flux_weakening_5.png" srcset="/img/loading.gif" lazyload
+alt="alt text" /> 图4 中区间1为 <span
+class="math inline">\(i_d=0\)</span>正常控制区间，区间2为弱磁升速控制区间。
+以 图3
+定子电流矢量轨迹分析隐极式PMSM的弱磁扩速控制过程。图3中A1点对应的转矩是
+<span class="math inline">\(T_{em1}\)</span>，是电动机在转速 <span
+class="math inline">\(w_1\)</span>
+时输出的最大转矩（电压和电流均达到极限值，故 <span
+class="math inline">\(w_1\)</span>即为电动机最大转矩时的转折速度）。转速升高到
+<span
+class="math inline">\(w_2（w_1&lt;w_2）\)</span>时，最大转矩/电流轨迹与电压极限椭圆相交于B点，对应的转矩为
+<span
+class="math inline">\(T_{em3}\)</span>，若此时定子电流矢量偏离最大转矩/电流轨迹由B点沿着电压极限椭圆移动到C
+点，在此过程中电流并没有达到极限值，但当移动到C 点时，将会输出更大的转矩
+<span class="math inline">\(T_{em2}（ T_{em2}&gt;T_{em3}
+）\)</span>，从而提高了电动机超过转折速度运行时的输出功率。如果要继续提高转速，则定子电流可以沿着电流极限圆由C
+点移动到A2点，但是转矩会下降。通过分析可以看出，定子电流矢量在从B →C→
+A2变化的过程中， <span
+class="math inline">\(i_d\)</span>逐步增大，削弱了永磁体磁通，在逆变器容量不变的情况下，达到了弱磁扩速的目的。并且转速越高，输出的转矩会越小。
+区间3 为到达A2（即输出达到最大输出功率）后如果仍需要扩速，则需按A2 → A3
+的轨迹变化。但若圆心坐标 <span
+class="math inline">\(（-\psi_f/L_d,0）\)</span> 落在电流极限圆外即
+<span class="math inline">\(-\psi_f/L_d&gt;i_{lim}\)</span>
+，则不存在此区间。 当电动机运行与某一转速w_e时，由电压平衡方程：</p>
+<ol start="7" type="1">
+<li><span
+class="math inline">\(u_s=w_e\sqrt{(L_qi_q)^2+(L_di_d+\psi_f)^2}\)</span></li>
+</ol>
+<p>可得到弱磁控制电流矢量轨迹：</p>
+<ol start="8" type="1">
+<li><span
+class="math inline">\(i_d=-\frac{\psi_f}{L_d}+\frac{1}{L_d}\sqrt{\frac{u_{lim}^2}{w_e^2}-(L_qi_q)^2}\)</span></li>
+</ol>
+<p>由式(8)可得转速表达式为：</p>
+<ol start="9" type="1">
+<li><span class="math inline">\(\Omega
+=\frac{u_{lim}^2}{p\sqrt{(\psi_f+L_qi_q)^2+(L_qi_q)^2}}\)</span></li>
+</ol>
+<p>弱磁控制式即为式(8)，如图3所示，通过控制i_d可使逆变器输出功率不变，将电机运行范围扩大到高速区域。
+但在上述两种控制方案中，当电动机转速达到较高转速时，电机反电势增大，都将会导致定子端电压大于母线电压，迫使定子电流跟踪其指令值所需的电压差减小至0（甚至为负），此时逆变器的dq
+轴电流控制器都会开始饱和，此时dq
+轴电流控制器输出均是其限幅值从而失去控制，没有达到弱磁控制的目的。因此在实际应用中，PMSM
+的弱磁控制主要是在满足电压极限椭圆和电流极限圆的基础上，调整 <span
+class="math inline">\(i_d\)</span>、<span
+class="math inline">\(i_q\)</span>，控制电流矢量轨迹，避免电流调节器饱和，从而使PMSM
+由恒转矩调速平稳、快速地过渡到弱磁工作模式。</p>
+<p>对于“迫使定子电流跟踪其指令值所需的电压差减小至0”的理解：
+定子电流指令值：这是由控制器设定的期望电流值，用于实现特定的电动机运行状态（如转矩、速度等）。</p>
+<p>电压差：为了使定子电流达到其指令值，控制器需要施加一定的电压差（即定子端电压与反电势之差）。这个电压差驱动电流变化，克服电动机的阻抗和反电势。</p>
+<p>电压差减小至0：当电动机转速高到一定程度时，反电势增大至接近甚至超过电源母线电压。此时，控制器能施加的电压差（定子端电压减去反电势）变得非常小，接近0。</p>
+<p>电压差为负：如果反电势超过了母线电压，施加到定子的电压差就会变成负值。这意味着即使控制器尽力提高定子端电压，反电势依然导致电流无法按照指令值跟踪，因为电压差不足以推动所需的电流。</p>
+<p>当出现上述情况时，逆变器的dq轴电流控制器由于电压差不足而进入饱和状态，无法再进一步控制电流。这种情况下，弱磁控制（用于高转速时减小磁场以提高转速）无法有效实施，导致控制器失去对电流的精确控制。</p>
+<p>总结来说，这句话的意思是：当电动机转速很高时，由于反电势增大，控制器无法提供足够的电压差来维持所需的电流，从而导致电流控制器失去控制能力，无法实现预期的弱磁控制。</p>
+<p>图5 隐极电机定子电流矢量轨迹 <img src="/images/flux_weakening_6.png" srcset="/img/loading.gif" lazyload
+alt="alt text" /> 如图 5 示当电流PI
+调节器饱和后，电动机的定子端电压达到最大值，电流矢量 <span
+class="math inline">\(i_s\)</span> 达到电压极限圆上的A1
+点，使电动机电流失去控制。定子电流矢量轨迹将由电压极限方程式(5)和电流极限方程式(6)决定。此时若不加以控制
+<span class="math inline">\(i_s\)</span> 将脱离A1 ，可能会向D 点或向B
+点摆动。如果在A1 点能够控制 <span class="math inline">\(i_s\)</span>
+，使其 <span class="math inline">\(i_q\)</span> 逐渐减小，<span
+class="math inline">\(i_d\)</span> 逐渐向负增大，那么 <span
+class="math inline">\(i_s\)</span> 必然会 向左摆动，向C
+点靠近，使得反向直轴电流 <span class="math inline">\(i_d\)</span>
+抵消永磁体磁通。由式 <span
+class="math inline">\(u_s=w_e\sqrt{(L_qi_q)^2+(L_di_d+\psi_f)^2}\)</span>
+可知，这会使定子电压幅值 <span class="math inline">\(u_s\)</span>
+减小，<span
+class="math inline">\(u_s&lt;u_{lim}\)</span>，使调节器脱离饱和，与此同时，随着
+<span class="math inline">\(i_d\)</span> 的逐渐增大和 <span
+class="math inline">\(i_q\)</span> 的逐渐减小，转子速度范围会逐步扩大。
+实际进行弱磁控制时，主要需要考虑下面的情况：</p>
+<p>①
+相关电流方程必须设定在最极端条件下均能运行，因为其运行在电机反电势极高的情况下，此时电流调节器己饱和，可利用的直流母线电压极小甚至为０;</p>
+<p>②
+为保证电机稳定运行在弱磁高速区，需要进一步控制输入至电压逆变器的电压;</p>
+<p>③
+相关的弱磁控制数据取决于电机运行时的电气特性，需要实时地更改这些数据。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/flux-weakening/" class="category-chain-item">flux weakening</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/flux-weakening/" class="print-no-link">#flux weakening</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>电机弱磁理论</div>
+      <div>http://example.com/2024/10/19/电机弱磁理论/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>白熊</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>October 19, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/10/19/ladder/" title="ladder">
+                        <span class="hidden-mobile">ladder</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+<!-- hexo injector body_end start -->
+    <link defer rel="stylesheet" href="/css/reward-button.css"/>
+    <script src="/js/reward-button.js"></script>
+    <script>
+        new RewardButton({
+            btnIcon: "iconfont icon-love",
+            btnText: "赞赏",
+            comment: "看了这么久不支持我一下嘛！",
+            qrcodes: [{"src":"/images/config/wechat.jpg","caption":"微信","title":"微信赞赏码"}]
+        }).init();
+    </script>
+    <!-- hexo injector body_end end --></body>
+</html>
