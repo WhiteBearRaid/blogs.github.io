@@ -19,15 +19,15 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="dq轴定子电压方程如下： $ { \[\begin{matrix}  u_d &#x3D; Ri_d+\frac{d}{dt}\psi_d -w_e\psi_q\\ u_q&#x3D;Ri_q+\frac{d}{dt}\psi_q +w_e\psi_d \end{matrix}\] . $ 定子磁链方程如下： $ { \[\begin{matrix}  \psi_d &#x3D; L_di_d + \psi_f">
+    <meta name="description" content="dq轴定子电压方程如下： \(\left\{\begin{matrix}  u_d &#x3D; Ri_d+\frac{d}{dt}\psi_d -w_e\psi_q\\ u_q&#x3D;Ri_q+\frac{d}{dt}\psi_q +w_e\psi_d \end{matrix} \right.\) 定子磁链方程如下： \(\left\{\begin{matrix}  \psi_d &#x3D; L_di_d +">
 <meta property="og:type" content="article">
 <meta property="og:title" content="转子磁链和反电动势的相位关系">
 <meta property="og:url" content="http://example.com/2024/10/19/%E8%BD%AC%E5%AD%90%E7%A3%81%E9%93%BE%E5%92%8C%E5%8F%8D%E7%94%B5%E5%8A%A8%E5%8A%BF%E7%9A%84%E7%9B%B8%E4%BD%8D%E5%85%B3%E7%B3%BB/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="dq轴定子电压方程如下： $ { \[\begin{matrix}  u_d &#x3D; Ri_d+\frac{d}{dt}\psi_d -w_e\psi_q\\ u_q&#x3D;Ri_q+\frac{d}{dt}\psi_q +w_e\psi_d \end{matrix}\] . $ 定子磁链方程如下： $ { \[\begin{matrix}  \psi_d &#x3D; L_di_d + \psi_f">
+<meta property="og:description" content="dq轴定子电压方程如下： \(\left\{\begin{matrix}  u_d &#x3D; Ri_d+\frac{d}{dt}\psi_d -w_e\psi_q\\ u_q&#x3D;Ri_q+\frac{d}{dt}\psi_q +w_e\psi_d \end{matrix} \right.\) 定子磁链方程如下： \(\left\{\begin{matrix}  \psi_d &#x3D; L_di_d +">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-10-19T02:22:47.000Z">
-<meta property="article:modified_time" content="2024-10-19T02:29:13.054Z">
+<meta property="article:modified_time" content="2024-10-19T03:17:12.504Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="磁链">
 <meta property="article:tag" content="反电动势">
@@ -224,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          287 words
+          316 words
         
       </span>
     
@@ -278,28 +278,25 @@
               <div class="markdown-body">
                 
                 <p>dq轴定子电压方程如下：</p>
-$ {
-<span class="math display">\[\begin{matrix}  u_d =
+<p><span class="math inline">\(\left\{\begin{matrix}  u_d =
 Ri_d+\frac{d}{dt}\psi_d -w_e\psi_q\\ u_q=Ri_q+\frac{d}{dt}\psi_q
-+w_e\psi_d \end{matrix}\]</span>
-<p>. $</p>
++w_e\psi_d \end{matrix} \right.\)</span></p>
 <p>定子磁链方程如下：</p>
-$ {
-<span class="math display">\[\begin{matrix}  \psi_d = L_di_d + \psi_f\\
-\psi_q = L_qi_q \end{matrix}\]</span>
-<p>. $</p>
+<p><span class="math inline">\(\left\{\begin{matrix}  \psi_d = L_di_d +
+\psi_f\\ \psi_q = L_qi_q \end{matrix}\right.\)</span></p>
 <p>合并定子电压方程和定子磁链方程可得：</p>
-$ {
-<span class="math display">\[\begin{matrix}  u_d =
+<p><span class="math inline">\(\left\{\begin{matrix}  u_d =
 Ri_d+L_d\frac{d}{dt}i_d -w_eL_qi_q \\ u_q=Ri_q+L_q\frac{d}{dt}i_q
-+w_e(L_di_d+\psi_f) \end{matrix}\]</span>
-<p>. $</p>
++w_e(L_di_d+\psi_f) \end{matrix} \right.\)</span></p>
 <p>转子磁链投影到定子alpha轴上，可得：</p>
-<p>$ _{} = _fcos _e $</p>
+<p><span class="math inline">\(\psi_{\alpha} = \psi_fcos
+\theta_e\)</span></p>
 <p>假设电机的电角速度是w_e，初始相位为0，则磁链可以表示为：</p>
-<p>$ _{}=_fcos(w_et) $</p>
+<p><span
+class="math inline">\(\psi_{\alpha}=\psi_fcos(w_et)\)</span></p>
 <p>根据最基本的法拉第电磁感应定律，d轴上的磁链，切割定子绕组，会产生感应电动势，可以求得该磁链切割定子绕组产生的感应电动势为：</p>
-<p>$ e = ==_f=-w_e_fsin(w_et)=w_e_fcos(_e+) $</p>
+<p><span class="math inline">\(e =
+\frac{d\psi_{\alpha}}{dt}=\frac{d(\psi_fcos\theta_e)}{dt}=\psi_f\frac{d(cos(w_et))}{dt}=-w_e\psi_fsin(w_et)=w_e\psi_fcos(\theta_e+\frac{\pi}{2})\)</span></p>
 <p>由此可知，相对于磁链的当前相位或者说角度而言，磁链切割绕组所产生的反电动势的相位超前磁链90°。因此d轴磁链切割定子绕组产生的反电动势位于q轴位置。在使用反电动势估算得出转子角度信息时，要减去90°的超前相位。</p>
 
                 
