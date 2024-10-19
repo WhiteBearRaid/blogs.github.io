@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>ladder</title>
+    <link href="/2024/10/19/ladder/"/>
+    <url>/2024/10/19/ladder/</url>
+    
+    <content type="html"><![CDATA[<p>思维直觉对于事情的判断首先是通过直觉的，直觉的构成包括个人认知，思维各种因素在内，当做一件事件的时候，个人直觉的判断和客观的事实结果有出入，这个时候就需要分析个人直觉判断和客观事实的出入体现在哪里，是个人直觉里的哪部分出现了认知错误或者说不足，这就是反馈，通过反馈去校正个人直觉，从而去完善个人直觉，我们把他当做自适应控制器，通过反馈也就是直觉和客观事实的误差来不断的修正控制器，就可以实现控制器对不同事情的精准控制（我们可以理解为解决事情）。学习的过程就是一个不断修正、补充、完善系统的过程，如果个人直觉对事物的判断和处理有偏差，要及时去查明原因，从而反馈自身来调整，才能达到学习的目的。</p><p>拒绝工程师思维（劳动命思维），所有事情都硬扣细节，要有大局意识，看到该看的。不要优柔寡断，该落地就落地，错过了就没了。 <ahref="https://www.bilibili.com/video/BV1SV4y1U7h5/?spm_id_from=333.337.search-card.all.click&amp;vd_source=f1fc43fc2fc199d3fd1af8b33f4f5991">拒绝工程师思维和优柔寡断</a>。</p><p>学习：</p><ol type="1"><li><p>取势=学习目的+学习本质</p><p>1.1 学习的目的（没有目的不叫学习）</p><ol type="a"><li><p>解决什么？要学什么？学到什么程度？</p></li><li><p>不带着目的学习，不叫学习</p></li><li><p>明确目的，抓大放小</p></li></ol><p>1.2 学习内容的本质规律（学习要抓本质，花 最少的时间做最正确的事）</p><ol type="a"><li><p>抓本质，是取势的捷径</p></li><li><p>不会抓本质，会事倍功半</p></li></ol><p>1.3 取势实操方法：四赢法</p><ol type="a"><li><p>搞懂本质</p></li><li><p>提取关键（关键术语，关键步骤，关键过程）</p></li><li><p>针对性去看</p></li><li><p>实操积累套路经验</p></li></ol></li><li><p>明道=记忆+理解+运用</p><ol type="a"><li><p>记忆就是重复频率，分散记忆，多次重复，交替记忆</p></li><li><p>理解前需要有记忆，学会将抽象概念与实际联系，抽象概念与抽象概念联系</p></li><li><p>运用就是先模仿再独立实现</p></li></ol></li><li><p>优术篇</p><ol type="a"><li><p>复盘迭代</p></li><li><p>发现问题，找到本质，给出解决办法（针对问题重点突破），分类汇总经验</p></li></ol></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>意识流</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>ladder</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>磁链观测器</title>
     <link href="/2024/10/19/%E7%A3%81%E9%93%BE%E8%A7%82%E6%B5%8B%E5%99%A8/"/>
     <url>/2024/10/19/%E7%A3%81%E9%93%BE%E8%A7%82%E6%B5%8B%E5%99%A8/</url>
@@ -60,7 +85,7 @@
     <link href="/2024/10/19/hello-world/"/>
     <url>/2024/10/19/hello-world/</url>
     
-    <content type="html"><![CDATA[<p>https://whitebear.zeabur.app</p><h1 id="fluid使用教程">fluid使用教程</h1><p>https://github.com/fluid-dev/hexo-theme-fluid</p><h1 id="注意">注意</h1><h1 id="配置fluid可按照fluid-yml里的链接来做">配置fluid可按照fluidyml里的链接来做</h1><h1id="支持latex需要安装pandoc独立软件">支持latex需要安装pandoc（独立软件）</h1><h1id="在初始化hexo时一定要以管理员方式来操作用npm来实现避免错误">在初始化hexo时，一定要以管理员方式来操作，用npm来实现，避免错误</h1><p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your veryfirst post. Check <a href="https://hexo.io/docs/">documentation</a> formore info. If you get any problems when using Hexo, you can find theanswer in <ahref="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> oryou can ask me on <ahref="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="quick-start">Quick Start</h2><h3 id="create-a-new-post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <ahref="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="run-server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="generate-static-files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <ahref="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="deploy-to-remote-sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <ahref="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<p>https://whitebear.zeabur.app</p><h1 id="fluid使用教程">fluid使用教程</h1><p>https://github.com/fluid-dev/hexo-theme-fluid</p><h1 id="注意">注意</h1><h1 id="配置fluid可按照fluid-yml里的链接来做">配置fluid可按照fluidyml里的链接来做</h1><h1id="支持latex需要安装pandoc独立软件">支持latex需要安装pandoc（独立软件）</h1><h1id="在初始化hexo时一定要以管理员方式来操作用npm来实现避免错误">在初始化hexo时，一定要以管理员方式来操作，用npm来实现，避免错误</h1><h1 id="部署时要开梯子才能访问github">部署时要开梯子才能访问github</h1><p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your veryfirst post. Check <a href="https://hexo.io/docs/">documentation</a> formore info. If you get any problems when using Hexo, you can find theanswer in <ahref="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> oryou can ask me on <ahref="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="quick-start">Quick Start</h2><h3 id="create-a-new-post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <ahref="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="run-server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="generate-static-files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <ahref="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="deploy-to-remote-sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <ahref="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
     
     
     
