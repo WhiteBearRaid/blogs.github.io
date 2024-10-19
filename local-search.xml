@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>adrc</title>
+    <link href="/2024/10/19/adrc/"/>
+    <url>/2024/10/19/adrc/</url>
+    
+    <content type="html"><![CDATA[<h3 id="源码分析">源码分析</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>电机弱磁理论</title>
     <link href="/2024/10/19/%E7%94%B5%E6%9C%BA%E5%BC%B1%E7%A3%81%E7%90%86%E8%AE%BA/"/>
     <url>/2024/10/19/%E7%94%B5%E6%9C%BA%E5%BC%B1%E7%A3%81%E7%90%86%E8%AE%BA/</url>
@@ -20,7 +33,9 @@
     
     <tags>
       
-      <tag>flux weakening</tag>
+      <tag>flux</tag>
+      
+      <tag>weakening</tag>
       
     </tags>
     
@@ -54,11 +69,36 @@
   
   
   <entry>
+    <title>电控技术分级</title>
+    <link href="/2024/10/19/%E7%94%B5%E6%8E%A7%E6%8A%80%E6%9C%AF%E5%88%86%E7%BA%A7/"/>
+    <url>/2024/10/19/%E7%94%B5%E6%8E%A7%E6%8A%80%E6%9C%AF%E5%88%86%E7%BA%A7/</url>
+    
+    <content type="html"><![CDATA[<h1 id="一级能力">一级能力：</h1><p>熟悉电机坐标变化； FOC基本控制流程； 熟悉PID原理，可进行参数调整；了解基本的状态机逻辑； 掌握MCU的使用，熟悉底层配置；可以使用简易的环路demo运转电机，简单调节参数。</p><h1 id="二级能力">二级能力</h1><p>电机的动态数学模型、静态数学模型；对控制环路、控制理论要有一定的理论基础，理论和实践要做到一定的统一；除滑模外起码熟悉一种观测器；具有定期阅读文献的习惯，结合文献和公司代码库，完成关键问题的优化，能独立承担一部分开发工作；起码完参与了一个完整的项目开发，承担重要的模块编写和关键问题解决；提交解决的问题通过率高，尽量不存在解决一个问题引出多个问题的现象。</p><h1 id="三级能力">三级能力</h1><p>深刻理解FOC的基本原理，对于转子磁场定向控制、定子磁场定向，I-f标量控制，V-f标量控制，DTC等各种控制方法的优劣理解深刻；除了滑模之外，至少熟练应用两种以上的观测器；对于高频注入，包括旋转高频注入、脉振高频注入有深刻的理解；有定期阅读文献的习惯，为公司平台建设共享重要文档，独立主导项目的开发和解决大部分关键问题；精通simulink用于FOC控制系统的仿真，搭建平台用于辅助各种相关问题的解决；至少参与了2~3个完整的项目开发，至少主导了其中一个完整项目的开发。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术分层</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>ladder</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>磁链观测器</title>
     <link href="/2024/10/19/%E7%A3%81%E9%93%BE%E8%A7%82%E6%B5%8B%E5%99%A8/"/>
     <url>/2024/10/19/%E7%A3%81%E9%93%BE%E8%A7%82%E6%B5%8B%E5%99%A8/</url>
     
-    <content type="html"><![CDATA[<p>非线性磁链观测器的状态变量为磁链值，观测的磁链值收敛于电机实际磁链值，观测器收敛。SPM的 <span class="math inline">\(\alpha\beta\)</span> 轴电压方程：</p><p>（1） <span class="math inline">\(\begin{bmatrix}  u_\alpha\\  u_\beta  \end{bmatrix} = \begin{bmatrix} R+pL_d &amp;  0\\ 0&amp;R+pL_q \end{bmatrix}\begin{bmatrix} i_\alpha  \\ i_\beta\end{bmatrix}+ [w\psi_m]\begin{bmatrix} -sin\theta \\cos\theta\end{bmatrix}\)</span></p><p>将公式（1）进行变换得到：</p><p>（2） <span class="math inline">\(L\begin{bmatrix} \dot{i_\alpha} \\\dot{i_\beta}  \end{bmatrix}=-R_s\begin{bmatrix} i_\alpha\\i_\beta\end{bmatrix}+w\psi_m\begin{bmatrix}sin\theta\\-cos\theta  \end{bmatrix}+\begin{bmatrix} u_\alpha \\u_\beta\end{bmatrix}\)</span></p><p>状态空间方程：</p><p><span class="math inline">\(\left\{\begin{matrix}  \dot{x}=Ax+Bu\\  y=Cx \end{matrix}\right.\)</span></p><p>定义状态变量X：</p><p>（3） <span class="math inline">\(\begin{bmatrix}\dot{x1}\\\dot{x2}\end{bmatrix}=L\begin{bmatrix}\dot{i_\alpha}\\\dot{i_\beta}\end{bmatrix}-w\psi_m\begin{bmatrix} sin\theta\\-cos\theta\end{bmatrix}=\begin{bmatrix}y1\\y2\end{bmatrix}\)</span></p><p>（4） <spanclass="math inline">\(\begin{bmatrix}y1\\y2\end{bmatrix}=-R_s\begin{bmatrix}i_\alpha\\i_\beta\end{bmatrix}+\begin{bmatrix}u_\alpha\\u_\beta\end{bmatrix}\)</span></p><p>对式（3）两边进行积分可得：</p><p>（5） <spanclass="math inline">\(\begin{bmatrix}x1\\x2\end{bmatrix}=L\begin{bmatrix}i_\alpha\\i_\beta\end{bmatrix}+\psi_m\begin{bmatrix}cos\theta\\sin\theta\end{bmatrix}\)</span></p><p>因为w 是，所以积分后消去了w项。 定义空间向量eta(x):</p><p>（6） <spanclass="math inline">\(eta(x)=\begin{bmatrix}eta(x1)\\eta(x2)\end{bmatrix}=x-L\begin{bmatrix}i_\alpha\\i_\beta\end{bmatrix}=\psi_m\begin{bmatrix}cos\theta\\sin\theta\end{bmatrix}\)</span></p><p>观测器模型：</p><p><spanclass="math inline">\(\left\{\begin{matrix}  \dot{\hat{x}}=A\hat{x}+Bu+K(y-\hat{y})\\\hat{y}=C\hat{x} \end{matrix}\right.\)</span></p><p>非线性磁链观测器模型：</p><p>（7） <span class="math inline">\(\begin{bmatrix}\dot{\hat{x1}}\\\dot{\hat{x2}} \end{bmatrix}=\begin{bmatrix}y1 \\y2\end{bmatrix}+\frac{\gamma}{2}\begin{bmatrix}eta(x1)\\eta(x2)\end{bmatrix}\{ \psi_m^2-\left \|  eta(x)\right \|^2\}\)</span></p><p>当观测器收敛时有：</p><p><span class="math inline">\(\psi_m^2=\left \|  eta(x)\right \|^2\)</span></p><p>对式（7）进行离散化：</p><p><span class="math inline">\(\begin{bmatrix} \hat{x1(k)}\\\hat{x2(k)}\end{bmatrix}=T_s \left [ \begin{bmatrix}y1_{(k-1)}\\y2_{(k-1)}\end{bmatrix}+\frac{\gamma}{2}\begin{bmatrix}etax1_{(k-1)}\\etax2_{(k-1)}\end{bmatrix}\{   \psi_m^2-\left\|  eta(x)\right \| ^2\  \}  \right ] +\begin{bmatrix} \hat{x1_{(k-1)}}\\ \hat{x2_{(x-1)}}\end{bmatrix}\)</span></p><p>由此可得包含观测角度的sin、cos值：</p><p><spanclass="math inline">\(\begin{bmatrix}cos{\hat{\theta}}\\sin{\hat{\theta}}\end{bmatrix}=\frac{1}{\psi_m}\left(\begin{bmatrix} \hat{x1_(k)} \\ \hat{x2_{(k)}}\end{bmatrix}-L\begin{bmatrix} i_\alpha \\ i_\beta \end{bmatrix} \right)\)</span></p><p>磁链观测器锁相环输入： <img src="/images/pll_input.png" />因为电机反电动势滞后于转子磁链90°，所以通过反电动势计算得出的相位需要补偿90°。</p>]]></content>
+    <content type="html"><![CDATA[<p>非线性磁链观测器的状态变量为磁链值，当观测的磁链值收敛于电机实际磁链值时，观测器收敛。SPM的 <span class="math inline">\(\alpha\beta\)</span> 轴电压方程：</p><p>（1） <span class="math inline">\(\begin{bmatrix}  u_\alpha\\  u_\beta  \end{bmatrix} = \begin{bmatrix} R+pL_d &amp;  0\\ 0&amp;R+pL_q \end{bmatrix}\begin{bmatrix} i_\alpha  \\ i_\beta\end{bmatrix}+ [w\psi_m]\begin{bmatrix} -sin\theta \\cos\theta\end{bmatrix}\)</span></p><p>将公式（1）进行变换得到：</p><p>（2） <span class="math inline">\(L\begin{bmatrix} \dot{i_\alpha} \\\dot{i_\beta}  \end{bmatrix}=-R_s\begin{bmatrix} i_\alpha\\i_\beta\end{bmatrix}+w\psi_m\begin{bmatrix}sin\theta\\-cos\theta  \end{bmatrix}+\begin{bmatrix} u_\alpha \\u_\beta\end{bmatrix}\)</span></p><p>状态空间方程：</p><p><span class="math inline">\(\left\{\begin{matrix}  \dot{x}=Ax+Bu\\  y=Cx \end{matrix}\right.\)</span></p><p>定义状态变量X：</p><p>（3） <span class="math inline">\(\begin{bmatrix}\dot{x1}\\\dot{x2}\end{bmatrix}=L\begin{bmatrix}\dot{i_\alpha}\\\dot{i_\beta}\end{bmatrix}-w\psi_m\begin{bmatrix} sin\theta\\-cos\theta\end{bmatrix}=\begin{bmatrix}y1\\y2\end{bmatrix}\)</span></p><p>（4） <spanclass="math inline">\(\begin{bmatrix}y1\\y2\end{bmatrix}=-R_s\begin{bmatrix}i_\alpha\\i_\beta\end{bmatrix}+\begin{bmatrix}u_\alpha\\u_\beta\end{bmatrix}\)</span></p><p>对式（3）两边进行积分可得：</p><p>（5） <spanclass="math inline">\(\begin{bmatrix}x1\\x2\end{bmatrix}=L\begin{bmatrix}i_\alpha\\i_\beta\end{bmatrix}+\psi_m\begin{bmatrix}cos\theta\\sin\theta\end{bmatrix}\)</span></p><p>因为w 是，所以积分后消去了w项。 定义空间向量eta(x):</p><p>（6） <spanclass="math inline">\(eta(x)=\begin{bmatrix}eta(x1)\\eta(x2)\end{bmatrix}=x-L\begin{bmatrix}i_\alpha\\i_\beta\end{bmatrix}=\psi_m\begin{bmatrix}cos\theta\\sin\theta\end{bmatrix}\)</span></p><p>观测器模型：</p><p><spanclass="math inline">\(\left\{\begin{matrix}  \dot{\hat{x}}=A\hat{x}+Bu+K(y-\hat{y})\\\hat{y}=C\hat{x} \end{matrix}\right.\)</span></p><p>非线性磁链观测器模型：</p><p>（7） <span class="math inline">\(\begin{bmatrix}\dot{\hat{x1}}\\\dot{\hat{x2}} \end{bmatrix}=\begin{bmatrix}y1 \\y2\end{bmatrix}+\frac{\gamma}{2}\begin{bmatrix}eta(x1)\\eta(x2)\end{bmatrix}\{ \psi_m^2-\left \|  eta(x)\right \|^2\}\)</span></p><p>当观测器收敛时有：</p><p><span class="math inline">\(\psi_m^2=\left \|  eta(x)\right \|^2\)</span></p><p>对式（7）进行离散化：</p><p>（8） <span class="math inline">\(\begin{bmatrix} \hat{x1(k)}\\\hat{x2(k)}\end{bmatrix}=T_s \left [ \begin{bmatrix}y1_{(k-1)}\\y2_{(k-1)}\end{bmatrix}+\frac{\gamma}{2}\begin{bmatrix}etax1_{(k-1)}\\etax2_{(k-1)}\end{bmatrix}\{   \psi_m^2-\left\|  eta(x)\right \| ^2\  \}  \right ] +\begin{bmatrix} \hat{x1_{(k-1)}}\\ \hat{x2_{(x-1)}}\end{bmatrix}\)</span></p><p>由此可得包含观测角度的sin、cos值： （9） <spanclass="math inline">\(\begin{bmatrix}cos{\hat{\theta}}\\sin{\hat{\theta}}\end{bmatrix}=\frac{1}{\psi_m}\left(\begin{bmatrix} \hat{x1_(k)} \\ \hat{x2_{(k)}}\end{bmatrix}-L\begin{bmatrix} i_\alpha \\ i_\beta \end{bmatrix} \right)\)</span></p><p>磁链观测器锁相环输入： <img src="/images/pll_input.png" />因为电机反电动势滞后于转子磁链90°，所以通过反电动势计算得出的相位需要补偿90°。</p><h3 id="源码分析">源码分析</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><br><br></code></pre></td></tr></table></figure>]]></content>
     
     
     <categories>

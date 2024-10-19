@@ -19,15 +19,15 @@
   <meta name="author" content="白熊">
   <meta name="keywords" content="">
   
-    <meta name="description" content="关于坊主 从事电机开发行业 技能范畴 SVPWM调制技术，过调制策略，滑膜观测器">
+    <meta name="description" content="关于坊主 从事电机开发行业 仓库储备量 SVPWM调制（矢量切换点计算和矢量作用时间计算）； 过调制策略（过调制一区处理和过调制二区处理）； 标幺定点； simulink算法验证（现在只会小改动）； 电流环PI参数计算； ADRC控制（还不太会）； 前馈控制（电流环路前馈是为了抵消反电动势的影响从而加快响应，但是电流环路频率高，所以不需要前馈，因此前馈控制一般指对速度环路的控制）；">
 <meta property="og:type" content="website">
 <meta property="og:title" content="About">
 <meta property="og:url" content="http://example.com/about/index.html">
 <meta property="og:site_name" content="电机工坊">
-<meta property="og:description" content="关于坊主 从事电机开发行业 技能范畴 SVPWM调制技术，过调制策略，滑膜观测器">
+<meta property="og:description" content="关于坊主 从事电机开发行业 仓库储备量 SVPWM调制（矢量切换点计算和矢量作用时间计算）； 过调制策略（过调制一区处理和过调制二区处理）； 标幺定点； simulink算法验证（现在只会小改动）； 电流环PI参数计算； ADRC控制（还不太会）； 前馈控制（电流环路前馈是为了抵消反电动势的影响从而加快响应，但是电流环路频率高，所以不需要前馈，因此前馈控制一般指对速度环路的控制）；">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-10-18T16:59:34.000Z">
-<meta property="article:modified_time" content="2024-10-19T06:41:10.459Z">
+<meta property="article:modified_time" content="2024-10-19T10:59:49.010Z">
 <meta property="article:author" content="白熊">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -280,8 +280,30 @@
   <div class="markdown-body">
     <h3 id="关于坊主">关于坊主</h3>
 <p>从事电机开发行业</p>
-<h3 id="技能范畴">技能范畴</h3>
-<p>SVPWM调制技术，过调制策略，滑膜观测器</p>
+<h3 id="仓库储备量">仓库储备量</h3>
+<p>SVPWM调制（矢量切换点计算和矢量作用时间计算）；
+过调制策略（过调制一区处理和过调制二区处理）； 标幺定点；
+simulink算法验证（现在只会小改动）； 电流环PI参数计算；
+ADRC控制（还不太会）；
+前馈控制（电流环路前馈是为了抵消反电动势的影响从而加快响应，但是电流环路频率高，所以不需要前馈，因此前馈控制一般指对速度环路的控制）；
+MTPA（只了解概念）； 弱磁控制（只了解概念）； 死区补偿（只了解概念）；
+相位补偿延迟（不懂）； 转子温度估算（不懂）； 转子温度补偿（不懂）；
+负载扰动抑制（不懂）；
+谐波注入控制（只了解几种谐波注入提高母线电压利用率的原理）；
+窄波控制（不同）； 磁编解码（具体不是很清晰）； 谐波抑制（不懂）；
+电机参数辨识：根据反电动势计算磁链</p>
+<h4 id="无感">无感：</h4>
+<h5 id="观测器">观测器：</h5>
+<ol type="1">
+<li>SMO</li>
+<li>Luenberger(不会)</li>
+<li>Nonlinear flux observer（不会）</li>
+<li>Extended Kalman filter（不会）</li>
+</ol>
+<p>无感过渡过程安排：I/F,V/F; 开环切闭环；
+锁相环角度、速度信息提取；</p>
+<h4 id="熟悉的mcu">熟悉的MCU</h4>
+<p>Stm32系列； DSP C2000（28027（半懂），28062（没仔细了解））</p>
 
   </div>
 

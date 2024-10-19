@@ -19,22 +19,22 @@
   <meta name="author" content="白熊">
   <meta name="keywords" content="">
   
-    <meta name="description" content="思维直觉 对于事情的判断首先是通过直觉的，直觉的构成包括个人认知，思维各种因素在内，当做一件事件的时候，个人直觉的判断和客观的事实结果有出入，这个时候就需要分析个人直觉判断和客观事实的出入体现在哪里，是个人直觉里的哪部分出现了认知错误或者说不足，这就是反馈，通过反馈去校正个人直觉，从而去完善个人直觉，我们把他当做自适应控制器，通过反馈也就是直觉和客观事实的误差来不断的修正控制器，就可以实现控制器">
+    <meta name="description" content="一级能力： 熟悉电机坐标变化； FOC基本控制流程； 熟悉PID原理，可进行参数调整； 了解基本的状态机逻辑； 掌握MCU的使用，熟悉底层配置； 可以使用简易的环路demo运转电机，简单调节参数。 二级能力 电机的动态数学模型、静态数学模型； 对控制环路、控制理论要有一定的理论基础，理论和实践要做到一定的统一； 除滑模外起码熟悉一种观测器； 具有定期阅读文献的习惯，结合文献和公司代">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ladder">
-<meta property="og:url" content="http://example.com/2024/10/19/ladder/index.html">
+<meta property="og:title" content="电控技术分级">
+<meta property="og:url" content="http://example.com/2024/10/19/%E7%94%B5%E6%8E%A7%E6%8A%80%E6%9C%AF%E5%88%86%E7%BA%A7/index.html">
 <meta property="og:site_name" content="电机工坊">
-<meta property="og:description" content="思维直觉 对于事情的判断首先是通过直觉的，直觉的构成包括个人认知，思维各种因素在内，当做一件事件的时候，个人直觉的判断和客观的事实结果有出入，这个时候就需要分析个人直觉判断和客观事实的出入体现在哪里，是个人直觉里的哪部分出现了认知错误或者说不足，这就是反馈，通过反馈去校正个人直觉，从而去完善个人直觉，我们把他当做自适应控制器，通过反馈也就是直觉和客观事实的误差来不断的修正控制器，就可以实现控制器">
+<meta property="og:description" content="一级能力： 熟悉电机坐标变化； FOC基本控制流程； 熟悉PID原理，可进行参数调整； 了解基本的状态机逻辑； 掌握MCU的使用，熟悉底层配置； 可以使用简易的环路demo运转电机，简单调节参数。 二级能力 电机的动态数学模型、静态数学模型； 对控制环路、控制理论要有一定的理论基础，理论和实践要做到一定的统一； 除滑模外起码熟悉一种观测器； 具有定期阅读文献的习惯，结合文献和公司代">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-10-19T04:28:26.000Z">
-<meta property="article:modified_time" content="2024-10-19T11:00:31.579Z">
+<meta property="article:modified_time" content="2024-10-19T11:01:38.123Z">
 <meta property="article:author" content="白熊">
 <meta property="article:tag" content="ladder">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>ladder - 电机工坊</title>
+  <title>电控技术分级 - 电机工坊</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="ladder"></span>
+            <span id="subtitle" data-typed-text="电控技术分级"></span>
           
         </div>
 
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          593 words
+          445 words
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          5 mins
+          4 mins
         
       </span>
     
@@ -271,50 +271,29 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">ladder</h1>
+            <h1 id="seo-header">电控技术分级</h1>
             
             
               <div class="markdown-body">
                 
-                <p>思维直觉
-对于事情的判断首先是通过直觉的，直觉的构成包括个人认知，思维各种因素在内，当做一件事件的时候，个人直觉的判断和客观的事实结果有出入，这个时候就需要分析个人直觉判断和客观事实的出入体现在哪里，是个人直觉里的哪部分出现了认知错误或者说不足，这就是反馈，通过反馈去校正个人直觉，从而去完善个人直觉，我们把他当做自适应控制器，通过反馈也就是直觉和客观事实的误差来不断的修正控制器，就可以实现控制器对不同事情的精准控制（我们可以理解为解决事情）。
-学习的过程就是一个不断修正、补充、完善系统的过程，如果个人直觉对事物的判断和处理有偏差，要及时去查明原因，从而反馈自身来调整，才能达到学习的目的。</p>
-<p>拒绝工程师思维（劳动命思维），所有事情都硬扣细节，要有大局意识，看到该看的。
-不要优柔寡断，该落地就落地，错过了就没了。 <a
-target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1SV4y1U7h5/?spm_id_from=333.337.search-card.all.click&amp;vd_source=f1fc43fc2fc199d3fd1af8b33f4f5991">拒绝工程师思维和优柔寡断</a>。</p>
-<p>学习：</p>
-<ol type="1">
-<li><p>取势=学习目的+学习本质</p>
-<p>1.1 学习的目的（没有目的不叫学习）</p>
-<ol type="a">
-<li><p>解决什么？要学什么？学到什么程度？</p></li>
-<li><p>不带着目的学习，不叫学习</p></li>
-<li><p>明确目的，抓大放小</p></li>
-</ol>
-<p>1.2 学习内容的本质规律（学习要抓本质，花 最少的时间做最正确的事）</p>
-<ol type="a">
-<li><p>抓本质，是取势的捷径</p></li>
-<li><p>不会抓本质，会事倍功半</p></li>
-</ol>
-<p>1.3 取势实操方法：四赢法</p>
-<ol type="a">
-<li><p>搞懂本质</p></li>
-<li><p>提取关键（关键术语，关键步骤，关键过程）</p></li>
-<li><p>针对性去看</p></li>
-<li><p>实操积累套路经验</p></li>
-</ol></li>
-<li><p>明道=记忆+理解+运用</p>
-<ol type="a">
-<li><p>记忆就是重复频率，分散记忆，多次重复，交替记忆</p></li>
-<li><p>理解前需要有记忆，学会将抽象概念与实际联系，抽象概念与抽象概念联系</p></li>
-<li><p>运用就是先模仿再独立实现</p></li>
-</ol></li>
-<li><p>优术篇</p>
-<ol type="a">
-<li><p>复盘迭代</p></li>
-<li><p>发现问题，找到本质，给出解决办法（针对问题重点突破），分类汇总经验</p></li>
-</ol></li>
-</ol>
+                <h1 id="一级能力">一级能力：</h1>
+<p>熟悉电机坐标变化； FOC基本控制流程； 熟悉PID原理，可进行参数调整；
+了解基本的状态机逻辑； 掌握MCU的使用，熟悉底层配置；
+可以使用简易的环路demo运转电机，简单调节参数。</p>
+<h1 id="二级能力">二级能力</h1>
+<p>电机的动态数学模型、静态数学模型；
+对控制环路、控制理论要有一定的理论基础，理论和实践要做到一定的统一；
+除滑模外起码熟悉一种观测器；
+具有定期阅读文献的习惯，结合文献和公司代码库，完成关键问题的优化，能独立承担一部分开发工作；
+起码完参与了一个完整的项目开发，承担重要的模块编写和关键问题解决；
+提交解决的问题通过率高，尽量不存在解决一个问题引出多个问题的现象。</p>
+<h1 id="三级能力">三级能力</h1>
+<p>深刻理解FOC的基本原理，对于转子磁场定向控制、定子磁场定向，I-f标量控制，V-f标量控制，DTC等各种控制方法的优劣理解深刻；
+除了滑模之外，至少熟练应用两种以上的观测器；
+对于高频注入，包括旋转高频注入、脉振高频注入有深刻的理解；
+有定期阅读文献的习惯，为公司平台建设共享重要文档，独立主导项目的开发和解决大部分关键问题；
+精通simulink用于FOC控制系统的仿真，搭建平台用于辅助各种相关问题的解决；
+至少参与了2~3个完整的项目开发，至少主导了其中一个完整项目的开发。</p>
 
                 
               </div>
@@ -333,7 +312,7 @@ target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1SV4y1U7h5
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%84%8F%E8%AF%86%E6%B5%81/" class="category-chain-item">意识流</a>
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E5%B1%82/" class="category-chain-item">技术分层</a>
   
   
 
@@ -360,8 +339,8 @@ target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1SV4y1U7h5
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>ladder</div>
-      <div>http://example.com/2024/10/19/ladder/</div>
+      <div>电控技术分级</div>
+      <div>http://example.com/2024/10/19/电控技术分级/</div>
     </div>
     <div class="license-meta">
       
@@ -405,9 +384,9 @@ target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1SV4y1U7h5
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/10/19/%E7%94%B5%E6%9C%BA%E5%BC%B1%E7%A3%81%E7%90%86%E8%AE%BA/" title="电机弱磁理论">
+                      <a href="/2024/10/19/ladder/" title="ladder">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">电机弱磁理论</span>
+                        <span class="hidden-mobile">ladder</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -415,8 +394,8 @@ target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1SV4y1U7h5
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/10/19/%E7%94%B5%E6%8E%A7%E6%8A%80%E6%9C%AF%E5%88%86%E7%BA%A7/" title="电控技术分级">
-                        <span class="hidden-mobile">电控技术分级</span>
+                      <a href="/2024/10/19/%E7%A3%81%E9%93%BE%E8%A7%82%E6%B5%8B%E5%99%A8/" title="磁链观测器">
+                        <span class="hidden-mobile">磁链观测器</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
