@@ -19,24 +19,22 @@
   <meta name="author" content="白熊">
   <meta name="keywords" content="">
   
-    <meta name="description" content="非线性磁链观测器的状态变量为磁链值，当观测的磁链值收敛于电机实际磁链值时，观测器收敛。 SPM的 \(\alpha\beta\) 轴电压方程： （1） \(\begin{bmatrix}  u_\alpha \\  u_\beta  \end{bmatrix} &#x3D; \begin{bmatrix} R+pL_d &amp;  0\\ 0 &amp;R+pL_q \end{bmatrix}\b">
+    <meta name="description" content="1. 静态数学模型分析 静态数学模型主要描述的是电机在稳态下的电气特性。通常，我们在d-q旋转坐标系下对PMSM建模，以简化数学分析。  d轴、q轴电压方程： 在d-q坐标系中，PMSM的定子电压方程为： \(\left\{\begin{matrix} u_d &#x3D; Ri_d+\frac{d}{dt}\psi_d -w_e\psi_q\\ u_q&#x3D;Ri_q+\frac{d}{dt}\ps">
 <meta property="og:type" content="article">
-<meta property="og:title" content="磁链观测器">
-<meta property="og:url" content="http://example.com/2024/10/19/%E7%A3%81%E9%93%BE%E8%A7%82%E6%B5%8B%E5%99%A8/index.html">
+<meta property="og:title" content="PMSM动静态数学模型分析">
+<meta property="og:url" content="http://example.com/2024/10/19/PMSM%E5%8A%A8%E9%9D%99%E6%80%81%E6%95%B0%E5%AD%A6%E6%A8%A1%E5%9E%8B%E5%88%86%E6%9E%90/index.html">
 <meta property="og:site_name" content="电机工坊">
-<meta property="og:description" content="非线性磁链观测器的状态变量为磁链值，当观测的磁链值收敛于电机实际磁链值时，观测器收敛。 SPM的 \(\alpha\beta\) 轴电压方程： （1） \(\begin{bmatrix}  u_\alpha \\  u_\beta  \end{bmatrix} &#x3D; \begin{bmatrix} R+pL_d &amp;  0\\ 0 &amp;R+pL_q \end{bmatrix}\b">
+<meta property="og:description" content="1. 静态数学模型分析 静态数学模型主要描述的是电机在稳态下的电气特性。通常，我们在d-q旋转坐标系下对PMSM建模，以简化数学分析。  d轴、q轴电压方程： 在d-q坐标系中，PMSM的定子电压方程为： \(\left\{\begin{matrix} u_d &#x3D; Ri_d+\frac{d}{dt}\psi_d -w_e\psi_q\\ u_q&#x3D;Ri_q+\frac{d}{dt}\ps">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/images/pll_input.png">
-<meta property="article:published_time" content="2024-10-19T02:33:35.000Z">
-<meta property="article:modified_time" content="2024-10-20T02:47:20.795Z">
+<meta property="article:published_time" content="2024-10-19T04:28:26.000Z">
+<meta property="article:modified_time" content="2024-10-20T03:35:23.884Z">
 <meta property="article:author" content="白熊">
-<meta property="article:tag" content="nolinear flux observer">
+<meta property="article:tag" content="电机模型">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/images/pll_input.png">
   
   
   
-  <title>磁链观测器 - 电机工坊</title>
+  <title>PMSM动静态数学模型分析 - 电机工坊</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -202,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="磁链观测器"></span>
+            <span id="subtitle" data-typed-text="PMSM动静态数学模型分析"></span>
           
         </div>
 
@@ -213,8 +211,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-10-19 10:33" pubdate>
-          October 19, 2024 am
+        <time datetime="2024-10-19 12:28" pubdate>
+          October 19, 2024 pm
         </time>
       </span>
     
@@ -225,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          829 words
+          823 words
         
       </span>
     
@@ -273,67 +271,87 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">磁链观测器</h1>
+            <h1 id="seo-header">PMSM动静态数学模型分析</h1>
             
             
               <div class="markdown-body">
                 
-                <p>非线性磁链观测器的状态变量为磁链值，当观测的磁链值收敛于电机实际磁链值时，观测器收敛。
-SPM的 <span class="math inline">\(\alpha\beta\)</span> 轴电压方程：</p>
-<p>（1） <span class="math inline">\(\begin{bmatrix}  u_\alpha
-\\  u_\beta  \end{bmatrix} = \begin{bmatrix} R+pL_d &amp;  0\\ 0
-&amp;R+pL_q \end{bmatrix}\begin{bmatrix} i_\alpha  \\ i_\beta
-\end{bmatrix}+ [w\psi_m]\begin{bmatrix} -sin\theta \\
-cos\theta\end{bmatrix}\)</span></p>
-<p>将公式（1）进行变换得到：</p>
-<p>（2） <span class="math inline">\(L\begin{bmatrix} \dot{i_\alpha} \\
-\dot{i_\beta}  \end{bmatrix}=-R_s\begin{bmatrix} i_\alpha\\
-i_\beta\end{bmatrix}+w\psi_m\begin{bmatrix}
-sin\theta\\-cos\theta  \end{bmatrix}+\begin{bmatrix} u_\alpha \\
-u_\beta\end{bmatrix}\)</span></p>
-<p>状态空间方程：</p>
-<p><span class="math inline">\(\left\{\begin{matrix}  \dot{x}=Ax+Bu
-\\  y=Cx \end{matrix}\right.\)</span></p>
-<p>定义状态变量X：</p>
-<p>（3） <span class="math inline">\(\begin{bmatrix}
-\dot{x1}\\\dot{x2}\end{bmatrix}=L\begin{bmatrix}\dot{i_\alpha}\\\dot{i_\beta}
-\end{bmatrix}-w\psi_m\begin{bmatrix} sin\theta\\-cos\theta
-\end{bmatrix}=\begin{bmatrix}y1\\y2\end{bmatrix}\)</span></p>
-<p>（4） <span
-class="math inline">\(\begin{bmatrix}y1\\y2\end{bmatrix}=-R_s\begin{bmatrix}i_\alpha\\i_\beta\end{bmatrix}+\begin{bmatrix}u_\alpha\\u_\beta\end{bmatrix}\)</span></p>
-<p>对式（3）两边进行积分可得：</p>
-<p>（5） <span
-class="math inline">\(\begin{bmatrix}x1\\x2\end{bmatrix}=L\begin{bmatrix}i_\alpha\\i_\beta\end{bmatrix}+\psi_m\begin{bmatrix}cos\theta\\sin\theta\end{bmatrix}\)</span></p>
-<p>因为w 是，所以积分后消去了w项。 定义空间向量eta(x):</p>
-<p>（6） <span
-class="math inline">\(eta(x)=\begin{bmatrix}eta(x1)\\eta(x2)\end{bmatrix}=x-L\begin{bmatrix}i_\alpha\\i_\beta\end{bmatrix}=\psi_m\begin{bmatrix}cos\theta\\sin\theta\end{bmatrix}\)</span></p>
-<p>观测器模型：</p>
-<p><span
-class="math inline">\(\left\{\begin{matrix}  \dot{\hat{x}}=A\hat{x}+Bu+K(y-\hat{y})
-\\\hat{y}=C\hat{x} \end{matrix}\right.\)</span></p>
-<p>非线性磁链观测器模型：</p>
-<p>（7） <span class="math inline">\(\begin{bmatrix}
-\dot{\hat{x1}}\\\dot{\hat{x2}} \end{bmatrix}=\begin{bmatrix}y1 \\
-y2\end{bmatrix}+\frac{\gamma}{2}\begin{bmatrix}eta(x1)\\
-eta(x2)\end{bmatrix}\{ \psi_m^2-\left \|  eta(x)\right \|
-^2\}\)</span></p>
-<p>当观测器收敛时有：</p>
-<p><span class="math inline">\(\psi_m^2=\left \|  eta(x)\right \|
-^2\)</span></p>
-<p>对式（7）进行离散化：</p>
-<p>（8） <span class="math inline">\(\begin{bmatrix} \hat{x1(k)}\\
-\hat{x2(k)}\end{bmatrix}=T_s \left [ \begin{bmatrix}
-y1_{(k-1)}\\y2_{(k-1)}\end{bmatrix}+\frac{\gamma}{2}\begin{bmatrix}etax1_{(k-1)}\\etax2_{(k-1)}\end{bmatrix}\{   \psi_m^2-\left
-\|  eta(x)\right \| ^2\  \}  \right ] +\begin{bmatrix} \hat{x1_{(k-1)}}
-\\ \hat{x2_{(x-1)}}\end{bmatrix}\)</span></p>
-<p>由此可得包含观测角度的sin、cos值： （9） <span
-class="math inline">\(\begin{bmatrix}cos{\hat{\theta}}\\sin{\hat{\theta}}\end{bmatrix}=\frac{1}{\psi_m}\left
-(\begin{bmatrix} \hat{x1_(k)} \\ \hat{x2_{(k)}}\end{bmatrix}
--L\begin{bmatrix} i_\alpha \\ i_\beta \end{bmatrix} \right)\)</span></p>
-<p>磁链观测器锁相环输入： <img src="/images/pll_input.png" srcset="/img/loading.gif" lazyload />
-因为电机反电动势滞后于转子磁链90°，所以通过反电动势计算得出的相位需要补偿90°。</p>
-<h3 id="源码分析">源码分析</h3>
-<p>结构体定义 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><br><br></code></pre></td></tr></table></figure> 函数源码 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> SQ(x)               ((x) * (x))</span><br><span class="hljs-comment">// nan and infinity check for floats</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> UTILS_IS_INF(x)     ((x) == (1.0 / 0.0) || (x) == (-1.0 / 0.0))</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> UTILS_IS_NAN(x)     ((x) != (x))</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> UTILS_NAN_ZERO(x)   (x = UTILS_IS_NAN(x) ? 0.0 : x)</span><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">foc_observer_update</span><span class="hljs-params">(<span class="hljs-type">float</span> v_alpha, <span class="hljs-type">float</span> v_beta, <span class="hljs-type">float</span> i_alpha, <span class="hljs-type">float</span> i_beta,<span class="hljs-type">float</span> dt, <span class="hljs-type">float</span> *x1, <span class="hljs-type">float</span> *x2, <span class="hljs-type">float</span> *phase, <span class="hljs-type">motor_all_state_t</span> *motor)</span> <br>&#123;<br>	<span class="hljs-comment">//获取电机参数</span><br>	mc_configuration *conf_now = motor-&gt;m_conf;<br><br>	<span class="hljs-type">float</span> R = conf_now-&gt;foc_motor_r;<br>	<span class="hljs-type">float</span> L = conf_now-&gt;foc_motor_l;<br>	<span class="hljs-type">float</span> lambda = conf_now-&gt;foc_motor_flux_linkage;<br><br>	<span class="hljs-comment">// Saturation compensation</span><br>	<span class="hljs-type">const</span> <span class="hljs-type">float</span> comp_fact = conf_now-&gt;foc_sat_comp * (motor-&gt;m_motor_state.i_abs_filter / conf_now-&gt;l_current_max);<br>	L -= L * comp_fact;<br>	lambda -= lambda * comp_fact;<br><br>	<span class="hljs-comment">// Temperature compensation</span><br>	<span class="hljs-keyword">if</span> (conf_now-&gt;foc_temp_comp) &#123;<br>		R = motor-&gt;m_res_temp_comp;<br>	&#125;<br><br>	<span class="hljs-type">float</span> ld_lq_diff = conf_now-&gt;foc_motor_ld_lq_diff;<br>	<span class="hljs-type">float</span> id = motor-&gt;m_motor_state.id;<br>	<span class="hljs-type">float</span> iq = motor-&gt;m_motor_state.iq;<br><br>	<span class="hljs-comment">// Adjust inductance for saliency.</span><br>	<span class="hljs-keyword">if</span> (fabsf(id) &gt; <span class="hljs-number">0.1</span> || fabsf(iq) &gt; <span class="hljs-number">0.1</span>) &#123;<br>		L = L - ld_lq_diff / <span class="hljs-number">2.0</span> + ld_lq_diff * SQ(iq) / (SQ(id) + SQ(iq));<br>	&#125;<br><br>	<span class="hljs-type">const</span> <span class="hljs-type">float</span> L_ia = L * i_alpha;<br>	<span class="hljs-type">const</span> <span class="hljs-type">float</span> L_ib = L * i_beta;<br>	<span class="hljs-type">const</span> <span class="hljs-type">float</span> R_ia = R * i_alpha;<br>	<span class="hljs-type">const</span> <span class="hljs-type">float</span> R_ib = R * i_beta;<br>	<span class="hljs-type">const</span> <span class="hljs-type">float</span> lambda_2 = SQ(lambda);<br>	<span class="hljs-type">const</span> <span class="hljs-type">float</span> gamma_half = motor-&gt;m_gamma_now * <span class="hljs-number">0.5</span>;<br><br>	<span class="hljs-keyword">switch</span> (conf_now-&gt;foc_observer_type) &#123;<br>		<span class="hljs-keyword">case</span> FOC_OBSERVER_ORTEGA_ORIGINAL: &#123;<br>			<span class="hljs-type">float</span> err = lambda_2 - (SQ(*x1 - L_ia) + SQ(*x2 - L_ib));<br>	<br>			<span class="hljs-comment">// Forcing this term to stay negative helps convergence according to</span><br>			<span class="hljs-comment">//</span><br>			<span class="hljs-comment">// http://cas.ensmp.fr/Publications/Publications/Papers/ObserverPermanentMagnet.pdf</span><br>			<span class="hljs-comment">// and</span><br>				<span class="hljs-comment">// https://arxiv.org/pdf/1905.00833.pdf</span><br>			<span class="hljs-keyword">if</span> (err &gt; <span class="hljs-number">0.0</span>) &#123;<br>				err = <span class="hljs-number">0.0</span>;<br>			&#125;<br><br>			<span class="hljs-type">float</span> x1_dot = v_alpha - R_ia + gamma_half * (*x1 - L_ia) * err;<br>			<span class="hljs-type">float</span> x2_dot = v_beta - R_ib + gamma_half * (*x2 - L_ib) * err;<br>	<br>			*x1 += x1_dot * dt;<br>			*x2 += x2_dot * dt;<br>	&#125; <span class="hljs-keyword">break</span>;<br><br>	<span class="hljs-keyword">default</span>:<br>		<span class="hljs-keyword">break</span>;<br>	&#125;<br><br>	UTILS_NAN_ZERO(*x1);<br>	UTILS_NAN_ZERO(*x2);<br><br>	<span class="hljs-comment">// Prevent the magnitude from getting too low, as that makes the angle very unstable.</span><br>	<span class="hljs-type">float</span> mag = NORM2_f(*x1, *x2);<br>	<span class="hljs-keyword">if</span> (mag &lt; (conf_now-&gt;foc_motor_flux_linkage * <span class="hljs-number">0.5</span>)) &#123;<br>		*x1 *= <span class="hljs-number">1.1</span>;<br>		*x2 *= <span class="hljs-number">1.1</span>;<br>	&#125;<br><br>	<span class="hljs-keyword">if</span> (phase) &#123;<br>		*phase = utils_fast_atan2(*x2 - L_ib, *x1 - L_ia);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+                <h3 id="静态数学模型分析">1. <strong>静态数学模型分析</strong></h3>
+<p>静态数学模型主要描述的是电机在稳态下的电气特性。通常，我们在d-q旋转坐标系下对PMSM建模，以简化数学分析。</p>
+<ul>
+<li><p><strong>d轴、q轴电压方程</strong>：<br />
+在d-q坐标系中，PMSM的定子电压方程为：</p>
+<p><span class="math inline">\(\left\{\begin{matrix} u_d =
+Ri_d+\frac{d}{dt}\psi_d -w_e\psi_q\\ u_q=Ri_q+\frac{d}{dt}\psi_q
++w_e\psi_d \end{matrix} \right.\)</span></p>
+<p>其中：</p>
+<ul>
+<li><span class="math inline">\(v_d,v_q\)</span> 分别为d轴和q轴电压</li>
+<li><span class="math inline">\(R_s\)</span> 为定子电阻</li>
+<li><span class="math inline">\(i_d,i_q\)</span>分别为d轴和q轴电流</li>
+<li><span class="math inline">\(\lambda_d\)</span>, <span
+class="math inline">\(\lambda_q\)</span>分别为d轴和q轴的磁链</li>
+<li><span class="math inline">\(\omega_e​\)</span> 为电机的电角速度</li>
+</ul></li>
+<li><p><strong>磁链方程</strong>：<br />
+PMSM的磁链方程为：</p>
+<p><span class="math inline">\(\left\{\begin{matrix} \psi_d = L_di_d +
+\psi_f\\ \psi_q = L_qi_q \end{matrix}\right.\)</span></p>
+<p>其中，<span class="math inline">\(L_d\)</span>和 <span
+class="math inline">\(L_q\)</span>​ 分别为d轴和q轴电感，<span
+class="math inline">\(\lambda_f\)</span>​ 为永磁体的磁链。</p>
+<p>对于SPM永磁同步电机来说，通常认为<span
+class="math inline">\(L_d=L_q=L_s\)</span>（电感对称），并且<span
+class="math inline">\(\lambda_d = L_s i_d +
+\lambda_f\)</span>​。</p></li>
+<li><p><strong>稳态电流和电压</strong>：<br />
+在稳态时，电机内部的电压、电流和磁链不随时间变化，动量项<span
+class="math inline">\(\frac{d\lambda_d}{dt}\)</span>和<span
+class="math inline">\(\frac{d_{\lambda_q}}{dt}\)</span>​​为零，简化为：</p>
+<p><span class="math inline">\(\left\{\begin{matrix} u_d = Ri_d -
+w_eL_qi_q \\ u_q=Ri_q +w_e(L_di_d+\psi_f) \end{matrix}
+\right.\)</span></p>
+<p>通过这些方程可以分析电机在稳态下的电压、电流分布，给定稳态转速<span
+class="math inline">\(\omega_e\)</span>​和电机负载的情况下，确定定子电流的大小和相位。</p></li>
+</ul>
+<h3 id="动态数学模型分析">2. <strong>动态数学模型分析</strong></h3>
+<p>动态数学模型则用于描述PMSM在瞬态过程中（如加速、减速或负载突变时）的行为。电机的动态方程包括电气方程和机械方程。</p>
+<ul>
+<li><p><strong>电气方程</strong>：<br />
+电气部分的动态行为可以通过前述的d-q电压方程描述。动态情况下，电压方程中的<span
+class="math inline">\(\frac{d\lambda_d}{dt}\)</span>和<span
+class="math inline">\(\frac{d_{\lambda_q}}{dt}\)</span>​​​​项不为零，因此必须考虑时间变化带来的影响。</p>
+<p><span class="math inline">\(\left\{\begin{matrix} u_d =
+Ri_d+\frac{d}{dt}\psi_d -w_e\psi_q\\ u_q=Ri_q+\frac{d}{dt}\psi_q
++w_e\psi_d \end{matrix} \right.\)</span></p>
+<p>动态模型用来描述电机在不同电压输入条件下电流变化的响应特性，尤其是在启动、刹车和负载变化时的电流、电压波动情况。</p></li>
+<li><p><strong>机械方程</strong>：<br />
+机械方程通过牛顿-欧拉方程来描述电机的转矩和转速关系：</p>
+<p><span class="math inline">\(J\frac{d\omega_m}{dt} = T_e - T_l -
+B\omega_m​\)</span></p>
+<p>其中：</p>
+<ul>
+<li>J为转动惯量</li>
+<li><span class="math inline">\(\omega_m\)</span>为机械转速</li>
+<li><span class="math inline">\(T_e\)</span>​ 为电磁转矩</li>
+<li><span class="math inline">\(T_l\)</span>​ 为负载转矩</li>
+<li>B为摩擦系数</li>
+</ul>
+<p>电磁转矩与q轴电流成正比：</p>
+<p><span class="math inline">\(T_e = \frac{3}{2} P (\lambda_f i_q + (L_d
+- L_q) i_d i_q)\)</span></p>
+<p>如果假设<span class="math inline">\(L_d =
+L_q\)</span>​，则电磁转矩简化为：</p>
+<p><span class="math inline">\(T_e = \frac{3}{2} P \lambda_f
+i_q\)</span></p>
+<p>其中，P为电机的极对数。</p></li>
+</ul>
+<h3 id="综合分析">3. <strong>综合分析</strong></h3>
+<p>动静态数学模型结合使用可以帮助我们理解PMSM在不同运行条件下的行为。</p>
+<ul>
+<li><strong>稳态条件下</strong>，通过静态方程分析电机的电压、电流、磁链和转矩的平衡关系，适用于电机长时间稳定运行时的电磁性能分析。</li>
+<li><strong>动态条件下</strong>，考虑电机的瞬态响应特性，尤其是启动和负载变化时的转矩和转速波动。动态模型特别在电机控制系统设计（如矢量控制和直接转矩控制）中应用广泛，用于设计电流、转矩和转速的闭环控制。</li>
+</ul>
 
                 
               </div>
@@ -352,7 +370,7 @@ class="math inline">\(\begin{bmatrix}cos{\hat{\theta}}\\sin{\hat{\theta}}\end{bm
     
       <span class="category-chain">
         
-  <a href="/categories/%E8%A7%82%E6%B5%8B%E5%99%A8/" class="category-chain-item">观测器</a>
+  <a href="/categories/%E7%94%B5%E6%9C%BA%E6%A8%A1%E5%9E%8B/" class="category-chain-item">电机模型</a>
   
   
 
@@ -367,7 +385,7 @@ class="math inline">\(\begin{bmatrix}cos{\hat{\theta}}\\sin{\hat{\theta}}\end{bm
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/nolinear-flux-observer/" class="print-no-link">#nolinear flux observer</a>
+        <a href="/tags/%E7%94%B5%E6%9C%BA%E6%A8%A1%E5%9E%8B/" class="print-no-link">#电机模型</a>
       
     </div>
   
@@ -379,8 +397,8 @@ class="math inline">\(\begin{bmatrix}cos{\hat{\theta}}\\sin{\hat{\theta}}\end{bm
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>磁链观测器</div>
-      <div>http://example.com/2024/10/19/磁链观测器/</div>
+      <div>PMSM动静态数学模型分析</div>
+      <div>http://example.com/2024/10/19/PMSM动静态数学模型分析/</div>
     </div>
     <div class="license-meta">
       
@@ -424,9 +442,9 @@ class="math inline">\(\begin{bmatrix}cos{\hat{\theta}}\\sin{\hat{\theta}}\end{bm
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/10/19/PMSM%E5%8A%A8%E9%9D%99%E6%80%81%E6%95%B0%E5%AD%A6%E6%A8%A1%E5%9E%8B%E5%88%86%E6%9E%90/" title="PMSM动静态数学模型分析">
+                      <a href="/2024/10/19/%E7%94%B5%E6%8E%A7%E6%8A%80%E6%9C%AF%E5%88%86%E7%BA%A7/" title="电控技术分级">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">PMSM动静态数学模型分析</span>
+                        <span class="hidden-mobile">电控技术分级</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -434,8 +452,8 @@ class="math inline">\(\begin{bmatrix}cos{\hat{\theta}}\\sin{\hat{\theta}}\end{bm
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/10/19/%E8%BD%AC%E5%AD%90%E7%A3%81%E9%93%BE%E5%92%8C%E5%8F%8D%E7%94%B5%E5%8A%A8%E5%8A%BF%E7%9A%84%E7%9B%B8%E4%BD%8D%E5%85%B3%E7%B3%BB/" title="转子磁链和反电动势的相位关系">
-                        <span class="hidden-mobile">转子磁链和反电动势的相位关系</span>
+                      <a href="/2024/10/19/%E7%A3%81%E9%93%BE%E8%A7%82%E6%B5%8B%E5%99%A8/" title="磁链观测器">
+                        <span class="hidden-mobile">磁链观测器</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
